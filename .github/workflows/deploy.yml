@@ -8,10 +8,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      # Это заставляет GitHub использовать новую версию Node.js
+      # ЗАСТАВЛЯЕМ ИСПОЛЬЗОВАТЬ НОВУЮ ВЕРСИЮ NODE.JS
       FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
     steps:
-      # Версия action остается v4, но теперь она будет запускаться с Node24
       - uses: actions/checkout@v4
       
       - name: Replace tokens in index.html
