@@ -9,8 +9,6 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
-      pages: write
-      id-token: write
     env:
       FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
     steps:
@@ -18,8 +16,9 @@ jobs:
       
       - name: Replace tokens in index.html
         run: |
-          sed -i 's/__TELEGRAM_BOT_TOKEN__/${{ secrets.TELEGRAM_BOT_TOKEN }}/g' index.html
-          sed -i 's/__TELEGRAM_CHAT_ID__/${{ secrets.TELEGRAM_CHAT_ID }}/g' index.html
+          # Заменяем плейсхолдеры в файле index.html
+          sed -i 's|__TELEGRAM_BOT_TOKEN__|${{ secrets.TELEGRAM_BOT_TOKEN }}|g' index.html
+          sed -i 's|__TELEGRAM_CHAT_ID__|${{ secrets.TELEGRAM_CHAT_ID }}|g' index.html
       
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
