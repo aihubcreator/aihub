@@ -448,101 +448,6 @@
         }
         .empty-state .icon { font-size: 48px; margin-bottom: 16px; }
 
-        .examples-header {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-        .examples-header h2 { font-size: 36px; margin-bottom: 8px; }
-        .examples-header p { color: #64748b; font-size: 18px; }
-
-        .examples-filters {
-            display: flex;
-            gap: 12px;
-            flex-wrap: wrap;
-            justify-content: center;
-            margin-bottom: 32px;
-        }
-        .examples-filters .filter-btn {
-            padding: 8px 20px;
-            border: 2px solid #e2e8f0;
-            border-radius: 40px;
-            background: white;
-            cursor: pointer;
-            font-size: 14px;
-            font-weight: 500;
-            transition: 0.2s;
-            color: #475569;
-        }
-        .examples-filters .filter-btn:hover {
-            border-color: #7c3aed;
-            color: #7c3aed;
-        }
-        .examples-filters .filter-btn.active {
-            background: #7c3aed;
-            color: white;
-            border-color: #7c3aed;
-        }
-
-        .examples-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 24px;
-        }
-
-        .example-card {
-            background: white;
-            border-radius: 20px;
-            padding: 24px;
-            border: 1px solid #f1f5f9;
-            transition: 0.3s;
-        }
-        .example-card:hover {
-            border-color: #7c3aed;
-            transform: translateY(-4px);
-            box-shadow: 0 12px 30px rgba(0,0,0,0.08);
-        }
-        .example-card .number {
-            display: inline-block;
-            background: #ede9fe;
-            color: #7c3aed;
-            padding: 2px 10px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 700;
-            margin-bottom: 8px;
-        }
-        .example-card h3 { font-size: 18px; margin-bottom: 6px; }
-        .example-card .category {
-            display: inline-block;
-            background: #f1f5f9;
-            padding: 2px 12px;
-            border-radius: 20px;
-            font-size: 12px;
-            color: #64748b;
-            margin-bottom: 10px;
-        }
-        .example-card .category.healthcare { background: #dbeafe; color: #1e40af; }
-        .example-card .category.manufacturing { background: #fef3c7; color: #92400e; }
-        .example-card .category.retail { background: #d1fae5; color: #065f46; }
-        .example-card .category.finance { background: #e0e7ff; color: #3730a3; }
-        .example-card .category.business { background: #fce4ec; color: #b91c1c; }
-        .example-card .category.support { background: #f3e8ff; color: #6d28d9; }
-        .example-card p { color: #475569; font-size: 14px; line-height: 1.6; }
-        .example-card .tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 6px;
-            margin-top: 12px;
-        }
-        .example-card .tags span {
-            background: #f8fafc;
-            padding: 2px 10px;
-            border-radius: 12px;
-            font-size: 11px;
-            color: #94a3b8;
-            border: 1px solid #e2e8f0;
-        }
-
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -650,7 +555,6 @@
             .benefits-grid { grid-template-columns: 1fr; }
             .steps-grid { grid-template-columns: 1fr; }
             .projects-grid { grid-template-columns: 1fr; }
-            .examples-grid { grid-template-columns: 1fr; }
             .header-content { flex-direction: column; gap: 12px; }
             .nav-tabs { width: 100%; justify-content: center; }
             .nav-tab { flex: 1; text-align: center; padding: 8px 12px; font-size: 12px; }
@@ -659,7 +563,6 @@
             .filters select, .filters input { width: 100%; }
             .stats-grid { grid-template-columns: 1fr 1fr; }
             .modal { padding: 24px; margin: 10px; }
-            .examples-filters .filter-btn { padding: 6px 14px; font-size: 12px; }
             .seo-text { padding: 20px; }
         }
     </style>
@@ -672,7 +575,6 @@
         <div class="nav-tabs">
             <button class="nav-tab active" data-tab="business">🏢 Бизнесу</button>
             <button class="nav-tab" data-tab="students">🎓 Студентам</button>
-            <button class="nav-tab" data-tab="examples">📚 Примеры</button>
         </div>
     </div>
 </header>
@@ -702,15 +604,17 @@
                         ⚠️ Вы уже отправили <span class="counter" id="requestCount">0</span> заявок сегодня. Максимум — 3 заявки в день.
                     </div>
                     <form id="leadForm" novalidate>
-                        <div class="form-group">
-                            <label>Ваше имя <span class="required">*</span></label>
-                            <input type="text" id="name" placeholder="Например: Иван Петров" />
-                            <div class="error-message" id="nameError">⚠️ Введите имя (минимум 2 символа)</div>
-                        </div>
-                        <div class="form-group">
-                            <label>Название компании <span class="required">*</span></label>
-                            <input type="text" id="company" placeholder="Например: ООО Ромашка" />
-                            <div class="error-message" id="companyError">⚠️ Введите название компании</div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Ваше имя <span class="required">*</span></label>
+                                <input type="text" id="name" placeholder="Например: Иван Петров" />
+                                <div class="error-message" id="nameError">⚠️ Введите имя (минимум 2 символа)</div>
+                            </div>
+                            <div class="form-group">
+                                <label>Название компании <span class="required">*</span></label>
+                                <input type="text" id="company" placeholder="Например: ООО Ромашка" />
+                                <div class="error-message" id="companyError">⚠️ Введите название компании</div>
+                            </div>
                         </div>
                         <div class="form-group">
                             <label>E-mail <span class="required">*</span></label>
@@ -817,22 +721,6 @@
             </div>
             <div class="projects-grid" id="projectsGrid"></div>
         </div>
-        <div class="tab-content" id="tab-examples">
-            <div class="examples-header">
-                <h2>📚 30 примеров автоматизации с помощью ИИ</h2>
-                <p>Идеи для дипломных проектов, вдохновлённые реальными кейсами</p>
-            </div>
-            <div class="examples-filters" id="examplesFilters">
-                <button class="filter-btn active" data-filter="all">Все</button>
-                <button class="filter-btn" data-filter="healthcare">🏥 Медицина</button>
-                <button class="filter-btn" data-filter="manufacturing">🏭 Производство</button>
-                <button class="filter-btn" data-filter="retail">🛍️ Ритейл</button>
-                <button class="filter-btn" data-filter="finance">💰 Финансы</button>
-                <button class="filter-btn" data-filter="business">📊 Бизнес</button>
-                <button class="filter-btn" data-filter="support">🗣️ Поддержка</button>
-            </div>
-            <div class="examples-grid" id="examplesGrid"></div>
-        </div>
         <section class="seo-text">
             <h2>Автоматизация бизнеса с помощью искусственного интеллекта</h2>
             <p><strong>AIHub</strong> — это платформа, которая соединяет бизнес со студентами-практиками для <strong>бесплатного внедрения искусственного интеллекта</strong>. Мы помогаем компаниям автоматизировать рутинные задачи, анализировать данные, создавать чат-ботов и внедрять нейросети в бизнес-процессы.</p>
@@ -883,47 +771,11 @@
 
 <script>
 // ============================================
-//  ТОКЕНЫ ПОДСТАВЛЯЮТСЯ АВТОМАТИЧЕСКИ ПРИ СБОРКЕ
-//  (GitHub Actions заменяет __...__ на реальные значения)
+//  ТОКЕНЫ TELEGRAM (ВРЕМЕННО ОТКРЫТЫ)
+//  ⚠️ В БУДУЩЕМ ПЕРЕНЕСТИ В БЭКЕНД
 // ============================================
-const TELEGRAM_BOT_TOKEN = '__TELEGRAM_BOT_TOKEN__';
-const TELEGRAM_CHAT_ID = '__TELEGRAM_CHAT_ID__';
-
-// ============================================
-//  30 ПРИМЕРОВ
-// ============================================
-const EXAMPLES = [
-    { id: 1, title: 'Анализ медицинских снимков', category: 'healthcare', description: 'ИИ обрабатывает КТ и МРТ-снимки, помогая врачам быстрее ставить диагнозы.', tags: ['Компьютерное зрение', 'Диагностика'] },
-    { id: 2, title: 'Оптимизация очередей в поликлиниках', category: 'healthcare', description: 'Система с компьютерным зрением анализирует заполненность зон ожидания и перераспределяет потоки пациентов.', tags: ['Компьютерное зрение', 'Оптимизация'] },
-    { id: 3, title: 'Анализ электронной истории болезни', category: 'healthcare', description: 'Нейросети помогают обрабатывать и систематизировать истории болезней пациентов.', tags: ['NLP', 'Медицина'] },
-    { id: 4, title: 'Прогнозирование загрузки медучреждений', category: 'healthcare', description: 'ИИ предсказывает пиковые нагрузки и помогает распределять ресурсы.', tags: ['Прогнозирование', 'Управление ресурсами'] },
-    { id: 5, title: 'Автоматическая обработка рецептов', category: 'healthcare', description: 'Распознавание и классификация рецептов с помощью OCR.', tags: ['OCR', 'Автоматизация'] },
-    { id: 6, title: 'Контроль качества сварных швов (Audi)', category: 'manufacturing', description: 'ИИ в реальном времени анализирует снимки сварных швов, обнаруживает дефекты.', tags: ['Компьютерное зрение', 'Качество'] },
-    { id: 7, title: 'Прогнозирование поломок оборудования (Siemens)', category: 'manufacturing', description: 'ИИ-модель анализирует данные и предсказывает поломки до их возникновения.', tags: ['Прогнозирование', 'Промышленность'] },
-    { id: 8, title: 'Автономное устранение неполадок (Bosch)', category: 'manufacturing', description: 'При поломке ИИ анализирует опыт других заводов и предлагает решение.', tags: ['ИИ-решения', 'Автономность'] },
-    { id: 9, title: 'Автоматический контроль качества на конвейере', category: 'manufacturing', description: 'Компьютерное зрение выявляет брак на производственной линии.', tags: ['Компьютерное зрение', 'Контроль качества'] },
-    { id: 10, title: 'Оптимизация логистики на заводе', category: 'manufacturing', description: 'ИИ оптимизирует маршруты перемещения деталей внутри завода.', tags: ['Оптимизация', 'Логистика'] },
-    { id: 11, title: 'Автоматическая инвентаризация склада', category: 'retail', description: 'Роботы с ИИ проводят учёт товаров и анализируют запасы.', tags: ['Роботизация', 'Инвентаризация'] },
-    { id: 12, title: 'ИИ-помощник для покупателей (Bunnings)', category: 'retail', description: 'Помогает с проектами: интерпретирует фото списков покупок, показывает инструкции.', tags: ['Помощник', 'E-commerce'] },
-    { id: 13, title: 'Аудит товарных карточек', category: 'retail', description: 'ИИ проверяет товары на соответствие, полноту описания и единый тон.', tags: ['Аудит', 'Контент'] },
-    { id: 14, title: 'Анализ отзывов на маркетплейсах', category: 'retail', description: 'Автоматический сбор и анализ тональности отзывов с Wildberries, Ozon.', tags: ['NLP', 'Маркетплейсы'] },
-    { id: 15, title: 'Прогнозирование спроса', category: 'retail', description: 'ИИ предсказывает, какие товары будут покупать, чтобы избежать дефицита.', tags: ['Прогнозирование', 'Управление запасами'] },
-    { id: 16, title: 'Автоматизация обработки счетов', category: 'finance', description: 'ИИ извлекает данные из счетов и накладных, сокращая ручной ввод.', tags: ['OCR', 'Автоматизация'] },
-    { id: 17, title: 'Анализ финансовой отчётности', category: 'finance', description: 'ИИ проверяет отчёты на аномалии, ошибки и противоречия.', tags: ['Анализ данных', 'Аудит'] },
-    { id: 18, title: 'Бот для обработки запросов клиентов', category: 'finance', description: 'Мульти-агентная система обрабатывает запросы на копии счетов.', tags: ['Чат-бот', 'Клиентский сервис'] },
-    { id: 19, title: 'Прогнозирование оттока клиентов (Cisco)', category: 'finance', description: 'ИИ анализирует риск отказа от продления контрактов.', tags: ['Прогнозирование', 'Удержание'] },
-    { id: 20, title: 'Автоматический анализ контрактов', category: 'finance', description: 'ИИ проверяет договоры на соответствие шаблону и риски.', tags: ['NLP', 'Юриспруденция'] },
-    { id: 21, title: 'Автоматическая обработка email (Cineplex)', category: 'business', description: 'ИИ сортирует письма и автоматически отвечает на типовые запросы.', tags: ['NLP', 'Email'] },
-    { id: 22, title: 'Автоматическое создание коммерческих предложений', category: 'business', description: 'ИИ генерирует персонализированные коммерческие предложения.', tags: ['Генерация', 'Продажи'] },
-    { id: 23, title: 'Расшифровка и анализ встреч', category: 'business', description: 'Автоматическая транскрипция встреч и извлечение ключевых решений.', tags: ['NLP', 'Транскрипция'] },
-    { id: 24, title: 'Автоматизация зарплатного учёта', category: 'business', description: 'ИИ рассчитывает зарплату и автоматизирует ввод данных.', tags: ['Бухгалтерия', 'Автоматизация'] },
-    { id: 25, title: 'Онбординг новых сотрудников', category: 'business', description: 'Автоматизация сбора документов и назначения обучения.', tags: ['HR', 'Онбординг'] },
-    { id: 26, title: 'Чат-бот для клиентской поддержки', category: 'support', description: 'Автоматические ответы на частые вопросы в Telegram и на сайте 24/7.', tags: ['Чат-бот', 'Клиентский сервис'] },
-    { id: 27, title: 'Анализ обращений клиентов', category: 'support', description: 'Классификация и маршрутизация запросов к специалистам.', tags: ['NLP', 'Маршрутизация'] },
-    { id: 28, title: 'Автоматический анализ отзывов в соцсетях', category: 'support', description: 'ИИ суммирует отзывы и выявляет повторяющиеся темы.', tags: ['NLP', 'Соцсети'] },
-    { id: 29, title: 'Персонализация рекомендаций', category: 'support', description: 'ИИ рекомендует товары на основе истории клиента.', tags: ['Рекомендации', 'Машинное обучение'] },
-    { id: 30, title: 'Автоматический возврат средств (Cineplex)', category: 'support', description: 'Полная автоматизация процесса возврата: от запроса до уведомления.', tags: ['Автоматизация', 'Клиентский опыт'] }
-];
+const TELEGRAM_BOT_TOKEN = '8828877419:AAFw2hlmMgLm4mGEYkHEftBR32W1XzZOpFs';
+const TELEGRAM_CHAT_ID = '314119467';
 
 // ============================================
 //  ХРАНИЛИЩЕ
@@ -955,9 +807,9 @@ const INDUSTRY_LABELS = {
 };
 
 // ============================================
-//  ЗАЩИТА ОТ СПАМА
+//  ЗАЩИТА ОТ СПАМА (3 заявки в день)
 // ============================================
-const MAX_REQUESTS_PER_DAY = 30;
+const MAX_REQUESTS_PER_DAY = 3;
 const STORAGE_KEY = 'aihub_requests';
 
 function getClientId() {
@@ -1182,24 +1034,6 @@ function renderProjects() {
         `;
     }).join('');
 }
-function renderExamples(filter = 'all') {
-    const grid = document.getElementById('examplesGrid');
-    let filtered = filter === 'all' ? EXAMPLES : EXAMPLES.filter(e => e.category === filter);
-    if (filtered.length === 0) {
-        grid.innerHTML = `<div class="empty-state" style="grid-column: 1/-1;"><div class="icon">🔍</div><h3>Нет примеров в этой категории</h3></div>`;
-        return;
-    }
-    const categoryLabels = { 'healthcare': 'Медицина', 'manufacturing': 'Производство', 'retail': 'Ритейл', 'finance': 'Финансы', 'business': 'Бизнес', 'support': 'Поддержка' };
-    grid.innerHTML = filtered.map(example => `
-        <div class="example-card">
-            <div class="number">#${example.id}</div>
-            <h3>${example.title}</h3>
-            <span class="category ${example.category}">${categoryLabels[example.category]}</span>
-            <p>${example.description}</p>
-            <div class="tags">${example.tags.map(tag => `<span>${tag}</span>`).join('')}</div>
-        </div>
-    `).join('');
-}
 
 // ============================================
 //  МОДАЛКА
@@ -1311,17 +1145,6 @@ document.getElementById('agreeCheckbox').addEventListener('change', function() {
 });
 
 // ============================================
-//  ФИЛЬТРЫ ПРИМЕРОВ
-// ============================================
-document.querySelectorAll('.filter-btn').forEach(btn => {
-    btn.addEventListener('click', function() {
-        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-        this.classList.add('active');
-        renderExamples(this.dataset.filter);
-    });
-});
-
-// ============================================
 //  ВКЛАДКИ
 // ============================================
 document.querySelectorAll('.nav-tab').forEach(tab => {
@@ -1336,9 +1159,6 @@ document.querySelectorAll('.nav-tab').forEach(tab => {
         if (this.dataset.tab === 'students' && typeof renderProjects === 'function') {
             renderProjects();
         }
-        if (this.dataset.tab === 'examples' && typeof renderExamples === 'function') {
-            renderExamples('all');
-        }
     });
 });
 
@@ -1349,10 +1169,6 @@ setTimeout(function() {
     if (typeof renderProjects === 'function') {
         renderProjects();
         console.log('✅ renderProjects вызван');
-    }
-    if (typeof renderExamples === 'function') {
-        renderExamples('all');
-        console.log('✅ renderExamples вызван');
     }
     if (typeof updateAllStats === 'function') {
         updateAllStats();
@@ -1366,7 +1182,6 @@ setTimeout(function() {
 }, 200);
 
 console.log('📊 Заявок в системе:', getApplications().length);
-console.log('📚 Загружено примеров:', EXAMPLES.length);
 console.log('🛡️ Лимит заявок:', MAX_REQUESTS_PER_DAY, 'в день');
 console.log('📧 Сегодня отправлено:', getTodayRequests());
 </script>
